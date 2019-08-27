@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csy.hr.mapper.JoblevelMapper">
+  <resultMap id="BaseResultMap" type="com.csy.hr.domain.Joblevel">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="titleLevel" jdbcType="CHAR" property="titlelevel" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="enabled" jdbcType="BIT" property="enabled" />
+  </resultMap>
+</mapper>

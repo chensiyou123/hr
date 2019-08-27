@@ -1,7 +1,7 @@
 package com.csy.hr.mapper;
 
 import com.csy.hr.domain.Hr;
-import tk.mybatis.mapper.common.Mapper;
+import com.csy.hr.utils.MyMapper;
 
-public interface HrMapper extends Mapper<Hr> {
+public interface HrMapper extends MyMapper<Hr> {
 }

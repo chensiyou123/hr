@@ -2,19 +2,13 @@ package com.csy.hr.domain;
 
 import javax.persistence.*;
 
-@Table(name = "vhr.role")
-public class Role {
+@Table(name = "vhr.politicsstatus")
+public class Politicsstatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
-
-    /**
-     * 角色名称
-     */
-    @Column(name = "nameZh")
-    private String namezh;
 
     /**
      * @return id
@@ -42,23 +36,5 @@ public class Role {
      */
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * 获取角色名称
-     *
-     * @return nameZh - 角色名称
-     */
-    public String getNamezh() {
-        return namezh;
-    }
-
-    /**
-     * 设置角色名称
-     *
-     * @param namezh 角色名称
-     */
-    public void setNamezh(String namezh) {
-        this.namezh = namezh;
     }
 }
