@@ -20,6 +20,11 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
     MenuService menuService;
     AntPathMatcher antPathMatcher = new AntPathMatcher();
 
+    /**
+     * 访问路径匹配到的橘色
+     * @param o 访问路径
+     * @return
+     */
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) {
         String requestUrl = ((FilterInvocation) o).getRequestUrl();

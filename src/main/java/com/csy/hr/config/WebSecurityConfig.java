@@ -34,6 +34,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     @Autowired
     CustomMetadataSource metadataSource;
     @Autowired
+    UrlAccessDecisionManager urlAccessDecisionManager;
+    @Autowired
     HrService hrService;
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -52,6 +54,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                     @Override
                     public <O extends FilterSecurityInterceptor> O postProcess(O o) {
                         o.setSecurityMetadataSource(metadataSource);
+                        o.setAccessDecisionManager(urlAccessDecisionManager);
                         return o;
                     }
                 })
