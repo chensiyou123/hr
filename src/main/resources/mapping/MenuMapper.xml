@@ -16,4 +16,20 @@
     <result column="parentId" jdbcType="INTEGER" property="parentid" />
     <result column="enabled" jdbcType="BIT" property="enabled" />
   </resultMap>
+  <sql id="baseColumn">
+        t1.url,
+        t1.path,
+        t1.component,
+        t1.name,
+        t1.iconCls,
+        t1.keepAlive,
+        t1.parentId,
+        t1.enabled
+  </sql>
+
+  <select id="query" parameterType="java.util.Map" resultType="com.csy.hr.domain.Menu">
+    select
+    <include refid="baseColumn"/>
+    from menu t1
+  </select>
 </mapper>

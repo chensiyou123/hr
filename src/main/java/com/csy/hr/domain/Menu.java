@@ -1,6 +1,7 @@
 package com.csy.hr.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "vhr.menu")
 public class Menu {
@@ -29,6 +30,12 @@ public class Menu {
     private Integer parentid;
 
     private Boolean enabled;
+
+
+    @Transient
+    private List<Role> roles;//菜单对应的角色
+    @Transient
+    private List<Menu> children;//菜单的子菜单
 
     /**
      * @return id
@@ -168,5 +175,21 @@ public class Menu {
      */
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Menu> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Menu> children) {
+        this.children = children;
     }
 }
