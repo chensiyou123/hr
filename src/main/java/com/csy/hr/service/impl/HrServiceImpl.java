@@ -35,6 +35,6 @@ public class HrServiceImpl implements HrService {
         if(CollectionUtils.isEmpty(hrs)){
             return (UserDetails) new UsernameNotFoundException("用户名不存在");
         }
-        return (UserDetails) hrs.get(0);
+        return  hrs.get(0);
     }
 }
