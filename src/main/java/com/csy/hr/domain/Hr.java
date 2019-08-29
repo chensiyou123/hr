@@ -1,9 +1,16 @@
 package com.csy.hr.domain;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Table(name = "vhr.hr")
-public class Hr {
+public class Hr implements UserDetails {
     /**
      * hrID
      */
@@ -47,171 +54,123 @@ public class Hr {
 
     private String remark;
 
-    /**
-     * 获取hrID
-     *
-     * @return id - hrID
-     */
+    @Transient
+    private List<Role> roles;
+
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * 设置hrID
-     *
-     * @param id hrID
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * 获取姓名
-     *
-     * @return name - 姓名
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * 设置姓名
-     *
-     * @param name 姓名
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * 获取手机号码
-     *
-     * @return phone - 手机号码
-     */
     public String getPhone() {
         return phone;
     }
 
-    /**
-     * 设置手机号码
-     *
-     * @param phone 手机号码
-     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    /**
-     * 获取住宅电话
-     *
-     * @return telephone - 住宅电话
-     */
     public String getTelephone() {
         return telephone;
     }
 
-    /**
-     * 设置住宅电话
-     *
-     * @param telephone 住宅电话
-     */
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
-    /**
-     * 获取联系地址
-     *
-     * @return address - 联系地址
-     */
     public String getAddress() {
         return address;
     }
 
-    /**
-     * 设置联系地址
-     *
-     * @param address 联系地址
-     */
     public void setAddress(String address) {
         this.address = address;
     }
 
-    /**
-     * @return enabled
-     */
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    /**
-     * @param enabled
-     */
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
-    /**
-     * 获取用户名
-     *
-     * @return username - 用户名
-     */
+    @Override
     public String getUsername() {
         return username;
     }
 
-    /**
-     * 设置用户名
-     *
-     * @param username 用户名
-     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * 获取密码
-     *
-     * @return password - 密码
-     */
+    @Override
     public String getPassword() {
         return password;
     }
 
-    /**
-     * 设置密码
-     *
-     * @param password 密码
-     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /**
-     * @return userface
-     */
     public String getUserface() {
         return userface;
     }
 
-    /**
-     * @param userface
-     */
     public void setUserface(String userface) {
         this.userface = userface;
     }
 
-    /**
-     * @return remark
-     */
     public String getRemark() {
         return remark;
     }
 
-    /**
-     * @param remark
-     */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return authorities;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
     }
 }

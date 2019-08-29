@@ -16,4 +16,18 @@
     <result column="userface" jdbcType="VARCHAR" property="userface" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
+
+  <resultMap id="lazyLoadRoles" type="com.csy.hr.domain.Hr" extends="BaseResultMap">
+    <collection property="roles" ofType="com.csy.hr.domain.HrRole" select="com.csy.hr.mapper.RoleMapper.selectByHr" column="id"></collection>
+  </resultMap>
+
+
+  <select id="query" parameterType="java.util.Map" resultMap="lazyLoadRoles">
+    select t1.* from  hr t1
+    <where>
+      <if test="username!=null and username!=''">
+        and t1.username=#{username}
+      </if>
+    </where>
+  </select>
 </mapper>
