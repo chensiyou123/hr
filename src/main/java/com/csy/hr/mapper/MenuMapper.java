@@ -10,4 +10,7 @@ import java.util.Map;
 @Repository
 public interface MenuMapper extends MyMapper<Menu> {
     List<Menu>query(Map map);
+
+
+    List<Menu>getMenusByHrId(Map map);
 }

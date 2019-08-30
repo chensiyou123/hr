@@ -16,4 +16,9 @@ public class MenuServiceImpl implements MenuService {
     public List<Menu> getAllMenu(Map map){
         return menuMapper.query(map);
     }
+
+    @Override
+    public List<Menu> getMenusByHrId(Map map) {
+        return menuMapper.getMenusByHrId(map);
+    }
 }

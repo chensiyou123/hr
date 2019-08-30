@@ -1,5 +1,7 @@
 package com.csy.hr.domain;
 
+import com.csy.hr.domain.view.MenuMeta;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -36,6 +38,9 @@ public class Menu {
     private List<Role> roles;//菜单对应的角色
     @Transient
     private List<Menu> children;//菜单的子菜单
+
+    @Transient
+    private MenuMeta meta;
 
     /**
      * @return id
@@ -191,5 +196,13 @@ public class Menu {
 
     public void setChildren(List<Menu> children) {
         this.children = children;
+    }
+
+    public MenuMeta getMeta() {
+        return meta;
+    }
+
+    public void setMeta(MenuMeta meta) {
+        this.meta = meta;
     }
 }

@@ -7,4 +7,7 @@ import java.util.Map;
 
 public interface MenuService {
     List<Menu> getAllMenu(Map map);
+
+
+    List<Menu> getMenusByHrId(Map map);
 }
