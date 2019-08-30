@@ -21,7 +21,7 @@ public class ConfigController {
     @RequestMapping("/sysmenu")
     public List<Menu> sysmenu() {
         Map map = new HashMap();
-      //  map.put("hrId", HrUtils.getCurrentHr().getId());
+        map.put("hrId", HrUtils.getCurrentHr().getId());
         return menuService.getMenusByHrId(map);
     }
 }
