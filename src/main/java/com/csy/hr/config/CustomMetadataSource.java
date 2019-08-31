@@ -10,9 +10,11 @@ import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class CustomMetadataSource implements FilterInvocationSecurityMetadataSource {
@@ -30,7 +32,7 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
         List<Menu> allMenu = menuService.getAllMenu(null);
         for (Menu menu : allMenu) {
-            if (antPathMatcher.match(menu.getUrl(), requestUrl) &&menu.getRoles().size()>0){
+            if (!Objects.isNull(menu) && antPathMatcher.match(menu.getUrl(), requestUrl) && !CollectionUtils.isEmpty(menu.getRoles())){
                 List<Role> roles = menu.getRoles();
                 int size = roles.size();
                 String[] values = new String[size];

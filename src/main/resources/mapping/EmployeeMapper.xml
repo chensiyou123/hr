@@ -34,4 +34,17 @@
     <result column="endContract" jdbcType="DATE" property="endcontract" />
     <result column="workAge" jdbcType="INTEGER" property="workage" />
   </resultMap>
+
+  <select id="query" parameterType="java.util.Map" resultType="com.csy.hr.domain.Employee">
+    select  t1.* from  employee t1
+    <where>
+      <if test="Id!=null and Id!=''">
+        and t1.id = #{id}
+      </if>
+      <if test="keywords!=null and keywords!=''">
+       and like name('%',#{keywords},'%')
+      </if>
+
+    </where>
+  </select>
 </mapper>

@@ -37,6 +37,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     UrlAccessDecisionManager urlAccessDecisionManager;
     @Autowired
     HrService hrService;
+    @Autowired
+    AuthenticationAccessDeniedHandler deniedHandler;
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/index.html", "/static/**", "/login_p", "/favicon.ico");
