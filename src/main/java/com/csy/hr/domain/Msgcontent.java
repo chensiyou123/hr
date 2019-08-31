@@ -1,5 +1,6 @@
 package com.csy.hr.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -8,67 +9,40 @@ public class Msgcontent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String title;
-
     private String message;
-
     @Column(name = "createDate")
-    private Date createdate;
+    private Timestamp createdate;
 
-    /**
-     * @return id
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * @param id
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * @return title
-     */
     public String getTitle() {
         return title;
     }
 
-    /**
-     * @param title
-     */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     * @return message
-     */
     public String getMessage() {
         return message;
     }
 
-    /**
-     * @param message
-     */
     public void setMessage(String message) {
         this.message = message;
     }
 
-    /**
-     * @return createDate
-     */
-    public Date getCreatedate() {
+    public Timestamp getCreatedate() {
         return createdate;
     }
 
-    /**
-     * @param createdate
-     */
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(Timestamp createdate) {
         this.createdate = createdate;
     }
 }

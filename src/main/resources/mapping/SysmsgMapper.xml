@@ -2,13 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.csy.hr.mapper.SysmsgMapper">
   <resultMap id="BaseResultMap" type="com.csy.hr.domain.Sysmsg">
-    <!--
-      WARNING - @mbg.generated
-    -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="mid" jdbcType="INTEGER" property="mid" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="hrid" jdbcType="INTEGER" property="hrid" />
     <result column="state" jdbcType="INTEGER" property="state" />
+    <association property="msgContent" javaType="com.csy.hr.domain.Msgcontent">
+      <id column="mcid" property="id" jdbcType="BIGINT" />
+      <result column="title" property="title" jdbcType="VARCHAR" />
+      <result column="message" property="message" jdbcType="VARCHAR" />
+
+    </association>
   </resultMap>
+
+  <select id="getSysMsg" resultMap="BaseResultMap">
+        select
+           sm.*,
+           mc.`message`,
+           mc.`title`,
+           mc.`createDate`,
+           mc.`id` as mcid
+        from sysmsg sm,msgcontent mc
+        where sm.`mid`=mc.`id` and sm.`hrid`=#{hrid}
+        order by mc.`createDate` desc
+        limit #{start},#{size}
+    </select>
 </mapper>

@@ -28,6 +28,9 @@ public class Sysmsg {
      */
     private Integer state;
 
+    @Transient
+    private Msgcontent msgContent;
+
     /**
      * @return id
      */
@@ -112,5 +115,13 @@ public class Sysmsg {
      */
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public Msgcontent getMsgContent() {
+        return msgContent;
+    }
+
+    public void setMsgContent(Msgcontent msgContent) {
+        this.msgContent = msgContent;
     }
 }
