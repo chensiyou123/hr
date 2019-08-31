@@ -20,7 +20,6 @@ public class EmpBasicController {
 
     @RequestMapping(value = "/emp", method = RequestMethod.GET)
     public RespBean getEmployeeByPage(PageQuery pageQuery){
-        Map<String, Object> map = new HashMap<>();
         return empService.query(pageQuery);
     }
 }
