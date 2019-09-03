@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Joblevel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     /**
      * 职称名称
@@ -22,17 +22,11 @@ public class Joblevel {
 
     private Boolean enabled;
 
-    /**
-     * @return id
-     */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -94,5 +88,9 @@ public class Joblevel {
      */
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Joblevel(String name) {
+        this.name = name;
     }
 }

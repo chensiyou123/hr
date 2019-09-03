@@ -1,6 +1,7 @@
 package com.csy.hr.service.impl;
 
 import com.csy.hr.domain.Employee;
+import com.csy.hr.domain.Nation;
 import com.csy.hr.mapper.EmployeeMapper;
 import com.csy.hr.service.EmpService;
 import com.csy.hr.utils.RespBean;
@@ -28,4 +29,5 @@ public class EmpServiceImpl implements EmpService {
         PageInfo pageInfo = new PageInfo(list);
         return RespBean.ok("查询成功", new SimplePage<Employee>().convert(pageInfo));
     }
+
 }

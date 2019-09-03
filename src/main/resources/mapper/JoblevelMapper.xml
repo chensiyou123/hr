@@ -11,4 +11,8 @@
     <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
     <result column="enabled" jdbcType="BIT" property="enabled" />
   </resultMap>
+
+  <select id="query" parameterType="java.util.Map" resultMap="BaseResultMap">
+    second  t1.* from  joblevel t1
+  </select>
 </mapper>

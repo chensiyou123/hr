@@ -37,4 +37,8 @@ public class Nation {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Nation(String name) {
+        this.name = name;
+    }
 }

@@ -6,21 +6,16 @@ import javax.persistence.*;
 public class Politicsstatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
 
-    /**
-     * @return id
-     */
-    public Integer getId() {
+
+    public Long getId() {
         return id;
     }
 
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,6 +30,10 @@ public class Politicsstatus {
      * @param name
      */
     public void setName(String name) {
+        this.name = name;
+    }
+
+    public Politicsstatus(String name) {
         this.name = name;
     }
 }

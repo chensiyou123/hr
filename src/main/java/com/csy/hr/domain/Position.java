@@ -78,4 +78,9 @@ public class Position {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
+    public Position(String name) {
+
+        this.name = name;
+    }
 }

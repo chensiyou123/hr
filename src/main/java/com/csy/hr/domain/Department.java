@@ -111,4 +111,7 @@ public class Department {
     public void setIsparent(Boolean isparent) {
         this.isparent = isparent;
     }
+    public Department(String name) {
+        this.name = name;
+    }
 }

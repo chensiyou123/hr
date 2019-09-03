@@ -42,7 +42,7 @@
         and t1.id = #{id}
       </if>
       <if test="keywords!=null and keywords!=''">
-       and like name('%',#{keywords},'%')
+        and like name('%',#{keywords},'%')
       </if>
 
     </where>

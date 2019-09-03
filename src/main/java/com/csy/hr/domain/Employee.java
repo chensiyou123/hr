@@ -54,7 +54,7 @@ public class Employee {
      * 政治面貌
      */
     @Column(name = "politicId")
-    private Integer politicid;
+    private Long politicid;
 
     /**
      * 邮箱
@@ -81,7 +81,7 @@ public class Employee {
      * 职称ID
      */
     @Column(name = "jobLevelId")
-    private Integer joblevelid;
+    private long joblevelid;
 
     /**
      * 职位ID
@@ -309,21 +309,12 @@ public class Employee {
         this.nativeplace = nativeplace;
     }
 
-    /**
-     * 获取政治面貌
-     *
-     * @return politicId - 政治面貌
-     */
-    public Integer getPoliticid() {
+
+    public Long getPoliticid() {
         return politicid;
     }
 
-    /**
-     * 设置政治面貌
-     *
-     * @param politicid 政治面貌
-     */
-    public void setPoliticid(Integer politicid) {
+    public void setPoliticid(Long politicid) {
         this.politicid = politicid;
     }
 
@@ -404,7 +395,7 @@ public class Employee {
      *
      * @return jobLevelId - 职称ID
      */
-    public Integer getJoblevelid() {
+    public Long getJoblevelid() {
         return joblevelid;
     }
 
@@ -413,7 +404,7 @@ public class Employee {
      *
      * @param joblevelid 职称ID
      */
-    public void setJoblevelid(Integer joblevelid) {
+    public void setJoblevelid(Long joblevelid) {
         this.joblevelid = joblevelid;
     }
 
