@@ -165,6 +165,25 @@ public class Employee {
     @Column(name = "workAge")
     private Integer workage;
 
+    @Transient
+    private  Department department;
+
+    @Transient
+    private  Joblevel jobLevel;
+
+    @Transient
+    private  Nation nation;
+
+    @Transient
+    private  Position position;
+
+    @Transient
+    private  Politicsstatus politicsStatus;
+
+    @Transient
+    private Salary salary;
+
+
     /**
      * 获取员工编号
      *
@@ -658,5 +677,58 @@ public class Employee {
      */
     public void setWorkage(Integer workage) {
         this.workage = workage;
+    }
+
+
+    public void setJoblevelid(long joblevelid) {
+        this.joblevelid = joblevelid;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Joblevel getJobLevel() {
+        return jobLevel;
+    }
+
+    public void setJobLevel(Joblevel jobLevel) {
+        this.jobLevel = jobLevel;
+    }
+
+    public Nation getNation() {
+        return nation;
+    }
+
+    public void setNation(Nation nation) {
+        this.nation = nation;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Politicsstatus getPoliticsStatus() {
+        return politicsStatus;
+    }
+
+    public void setPoliticsStatus(Politicsstatus politicsStatus) {
+        this.politicsStatus = politicsStatus;
+    }
+
+    public Salary getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Salary salary) {
+        this.salary = salary;
     }
 }

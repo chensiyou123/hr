@@ -12,6 +12,4 @@ import java.util.Map;
 @Repository
 public interface EmployeeMapper extends MyMapper<Employee> {
     List<Employee>query(Map map);
-    List<Nation> getAllNations();
-
 }

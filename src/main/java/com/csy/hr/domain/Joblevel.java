@@ -93,4 +93,8 @@ public class Joblevel {
     public Joblevel(String name) {
         this.name = name;
     }
+
+    public Joblevel() {
+
+    }
 }

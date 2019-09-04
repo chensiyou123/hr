@@ -1,11 +1,13 @@
 package com.csy.hr.controller.emp;
 
 import com.csy.hr.domain.Employee;
+import com.csy.hr.mapper.EmployeeMapper;
 import com.csy.hr.service.*;
 import com.csy.hr.utils.PoiUtils;
 import com.csy.hr.utils.RespBean;
 import com.csy.hr.utils.page.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +24,8 @@ import java.util.Map;
 public class EmpBasicController {
     @Autowired
     EmpService empService;
-
+    @Autowired
+    EmployeeMapper employeeMapper;
     @Autowired
     PoliticsstatusService politicsstatusService;
     @Autowired
@@ -51,5 +54,12 @@ public class EmpBasicController {
                 joblevelService.query(map)
         );
         return null;
+    }
+
+    @RequestMapping(value = "/exportEmp", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> exportEmp() {
+        Map map = new HashMap();
+        List<Employee>list = employeeMapper.query(map);
+        return PoiUtils.exportEmp2Excel(list);
     }
 }

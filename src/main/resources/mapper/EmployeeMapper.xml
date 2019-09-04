@@ -2,9 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.csy.hr.mapper.EmployeeMapper">
   <resultMap id="BaseResultMap" type="com.csy.hr.domain.Employee">
-    <!--
-      WARNING - @mbg.generated
-    -->
+
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="gender" jdbcType="CHAR" property="gender" />
@@ -33,18 +31,72 @@
     <result column="beginContract" jdbcType="DATE" property="begincontract" />
     <result column="endContract" jdbcType="DATE" property="endcontract" />
     <result column="workAge" jdbcType="INTEGER" property="workage" />
+    <association property="department" javaType="com.csy.hr.domain.Department">
+      <id property="id" column="did"/>
+      <result property="name" column="dname"/>
+    </association>
+    <association property="jobLevel" javaType="com.csy.hr.domain.Joblevel">
+      <id property="id" column="jlid"/>
+      <result property="name" column="jlname"/>
+      <result property="titlelevel" column="jlTitleLevel"/>
+    </association>
+    <association property="nation" javaType="com.csy.hr.domain.Nation">
+      <id property="id" column="nid"/>
+      <result property="name" column="nname"/>
+    </association>
+    <association property="position" javaType="com.csy.hr.domain.Position">
+      <id property="id" column="pid"/>
+      <result property="name" column="pname"/>
+    </association>
+    <association property="politicsStatus" javaType="com.csy.hr.domain.Politicsstatus">
+      <id property="id" column="psid"/>
+      <result property="name" column="psname"/>
+    </association>
+    <association property="salary" javaType="com.csy.hr.domain.Salary">
+      <id column="sid" jdbcType="INTEGER" property="id" />
+      <result column="bonus" jdbcType="INTEGER" property="bonus" />
+      <result column="lunchSalary" jdbcType="INTEGER" property="lunchsalary" />
+      <result column="trafficSalary" jdbcType="INTEGER" property="trafficsalary" />
+      <result column="basicSalary" jdbcType="INTEGER" property="basicsalary" />
+      <result column="allSalary" jdbcType="INTEGER" property="allsalary" />
+      <result column="pensionBase" jdbcType="INTEGER" property="pensionbase" />
+      <result column="pensionPer" jdbcType="REAL" property="pensionper" />
+      <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+      <result column="medicalBase" jdbcType="INTEGER" property="medicalbase" />
+      <result column="medicalPer" jdbcType="REAL" property="medicalper" />
+      <result column="accumulationFundBase" jdbcType="INTEGER" property="accumulationfundbase" />
+      <result column="accumulationFundPer" jdbcType="REAL" property="accumulationfundper" />
+      <result column="sname" jdbcType="VARCHAR" property="name" />
+    </association>
   </resultMap>
 
-  <select id="query" parameterType="java.util.Map" resultType="com.csy.hr.domain.Employee">
-    select  t1.* from  employee t1
+  <select id="query" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    e.*,
+    jl.`id` as jlid,
+    jl.`name` as jlname,
+    jl.`titleLevel` as jlTitleLevel,
+    d.`id` as did,
+    d.`name` as dname,
+    n.`id` as nid,
+    n.`name` as nname,
+    p.`id` as pid,
+    p.`name` as pname,
+    ps.`id` as psid,
+    ps.`name` as psname
+    from employee e,joblevel jl,department d,nation n,position p,politicsstatus ps
     <where>
+      e.`posId`=p.`id`
+      and e.`jobLevelId`=jl.`id`
+      and e.`departmentId`=d.id
+      and e.`nationId`=n.`id`
+      and e.`politicId`=ps.`id` and e.`name`
       <if test="Id!=null and Id!=''">
-        and t1.id = #{id}
+        and e.id = #{id}
       </if>
       <if test="keywords!=null and keywords!=''">
         and like name('%',#{keywords},'%')
       </if>
-
     </where>
   </select>
 </mapper>

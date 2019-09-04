@@ -325,4 +325,8 @@ public class Salary {
     public void setName(String name) {
         this.name = name;
     }
+
+    public  Salary(){
+
+    }
 }

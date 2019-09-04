@@ -36,4 +36,5 @@ public class Politicsstatus {
     public Politicsstatus(String name) {
         this.name = name;
     }
+    public Politicsstatus(){}
 }

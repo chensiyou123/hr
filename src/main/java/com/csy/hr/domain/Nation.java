@@ -41,4 +41,5 @@ public class Nation {
     public Nation(String name) {
         this.name = name;
     }
+    public Nation(){}
 }

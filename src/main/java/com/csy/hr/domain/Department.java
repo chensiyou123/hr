@@ -114,4 +114,8 @@ public class Department {
     public Department(String name) {
         this.name = name;
     }
+
+    public Department(){
+
+    }
 }
